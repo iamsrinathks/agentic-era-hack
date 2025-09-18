@@ -15,7 +15,7 @@
 variable "project_name" {
   type        = string
   description = "Project name used as a base for resource naming"
-  default     = "csp-product-curation-agent"
+
 }
 
 variable "prod_project_id" {
@@ -42,7 +42,6 @@ variable "region" {
 variable "host_connection_name" {
   description = "Name of the host connection to create in Cloud Build"
   type        = string
-  default     = "csp-product-curation-agent-github-connection"
 }
 
 variable "repository_name" {
@@ -92,7 +91,7 @@ variable "cicd_roles" {
 variable "cicd_sa_deployment_required_roles" {
   description = "List of roles to assign to the CICD runner service account for the Staging and Prod projects."
   type        = list(string)
-  default = [    
+  default = [
     "roles/iam.serviceAccountUser",
     "roles/aiplatform.user",
     "roles/storage.admin"
@@ -103,6 +102,7 @@ variable "cicd_sa_deployment_required_roles" {
 variable "repository_owner" {
   description = "Owner of the Git repository - username or organization"
   type        = string
+  default     = "iamsrinathks"
 }
 
 variable "github_app_installation_id" {
@@ -126,6 +126,36 @@ variable "create_cb_connection" {
 
 variable "create_repository" {
   description = "Flag indicating whether to create a new Git repository"
+  type        = bool
+  default     = false
+}
+
+variable "create_bigquery_datasets" {
+  description = "Whether to create BigQuery datasets for feedback and telemetry"
+  type        = bool
+  default     = false
+}
+
+variable "create_service_accounts" {
+  description = "Whether to create application service accounts in target projects"
+  type        = bool
+  default     = false
+}
+
+variable "create_storage_buckets" {
+  description = "Whether to create GCS buckets for logs in target projects"
+  type        = bool
+  default     = false
+}
+
+variable "create_cloudbuild_repository" {
+  description = "Whether to create the Cloud Build repository resource linking to GitHub. If false, repo creation is skipped and existing repo/data should be used."
+  type        = bool
+  default     = false
+}
+
+variable "create_build_triggers" {
+  description = "Whether to create Cloud Build triggers pointing at the Cloud Build repository. Set false if repository does not exist yet."
   type        = bool
   default     = false
 }

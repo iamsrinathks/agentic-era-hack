@@ -24,19 +24,23 @@ terraform {
       source  = "integrations/github"
       version = "~> 6.5.0"
     }
+    random = {
+      source = "hashicorp/random"
+      version = "3.6.2"
+    }
   }
 }
 
 provider "google" {
   alias                 = "staging_billing_override"
   billing_project       = var.staging_project_id
-  region = var.region
+  region                = var.region
   user_project_override = true
 }
 
 provider "google" {
   alias                 = "prod_billing_override"
   billing_project       = var.prod_project_id
-  region = var.region
+  region                = var.region
   user_project_override = true
 }
