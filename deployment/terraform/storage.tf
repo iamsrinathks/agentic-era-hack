@@ -13,12 +13,16 @@
 # limitations under the License.
 
 provider "google" {
-  region = var.region
+  region                = var.region
   user_project_override = true
 }
 
+resource "random_id" "bucket_suffix" {
+  byte_length = 4
+}
+
 resource "google_storage_bucket" "bucket_load_test_results" {
-  name                        = "${var.cicd_runner_project_id}-${var.project_name}-load-test"
+  name                        = "bucket-load-test-${random_id.bucket_suffix.hex}"
   location                    = var.region
   project                     = var.cicd_runner_project_id
   uniform_bucket_level_access = true
@@ -27,8 +31,8 @@ resource "google_storage_bucket" "bucket_load_test_results" {
 }
 
 resource "google_storage_bucket" "logs_data_bucket" {
-  for_each                    = toset(local.all_project_ids)
-  name                        = "${each.value}-${var.project_name}-logs-data"
+  for_each                    = var.create_storage_buckets ? toset(local.all_project_ids) : toset([])
+  name                        = "bucket-logs-data-${random_id.bucket_suffix.hex}-${each.value}"
   location                    = var.region
   project                     = each.value
   uniform_bucket_level_access = true

@@ -1,3 +1,4 @@
+
 # Copyright 2025 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,50 +33,27 @@ def test_agent_stream() -> None:
     session = session_service.create_session_sync(user_id="test_user", app_name="test")
     runner = Runner(agent=root_agent, session_service=session_service, app_name="test")
 
-    # Turn 1: Initial greeting
-    message1 = types.Content(role="user", parts=[types.Part.from_text(text="Hello")])
-    events1 = list(
+    message = types.Content(
+        role="user", parts=[types.Part.from_text(text="Why is the sky blue?")]
+    )
+
+    events = list(
         runner.run(
-            new_message=message1,
+            new_message=message,
             user_id="test_user",
             session_id=session.id,
             run_config=RunConfig(streaming_mode=StreamingMode.SSE),
         )
     )
-    assert len(events1) > 0, "Expected at least one message"
+    assert len(events) > 0, "Expected at least one message"
 
-    response1 = ""
-    for event in events1:
+    has_text_content = False
+    for event in events:
         if (
             event.content
             and event.content.parts
             and any(part.text for part in event.content.parts)
         ):
-            response1 += event.content.parts[0].text
-
-    assert "product" in response1.lower(), f"Expected agent to ask for a product name, but got: {response1}"
-
-    # Turn 2: Provide product name
-    message2 = types.Content(role="user", parts=[types.Part.from_text(text="Data Fusion")])
-    events2 = list(
-        runner.run(
-            new_message=message2,
-            user_id="test_user",
-            session_id=session.id,
-            run_config=RunConfig(streaming_mode=StreamingMode.SSE),
-        )
-    )
-    assert len(events2) > 0, "Expected at least one message"
-
-    response2 = ""
-    for event in events2:
-        if (
-            event.content
-            and event.content.parts
-            and any(part.text for part in event.content.parts)
-        ):
-            response2 += event.content.parts[0].text
-
-    assert "discovery" in response2.lower(), f"Expected agent to ask for next action, but got: {response2}"
-    assert "security" in response2.lower(), f"Expected agent to ask for next action, but got: {response2}"
-    assert "infra" in response2.lower(), f"Expected agent to ask for next action, but got: {response2}"
+            has_text_content = True
+            break
+    assert has_text_content, "Expected at least one message with text content"

@@ -13,7 +13,7 @@
 # limitations under the License.
 
 resource "google_project_iam_member" "bigquery_data_editor" {
-  for_each = local.deploy_project_ids
+  for_each = var.create_bigquery_datasets ? local.deploy_project_ids : {}
 
   project = each.value
   role    = "roles/bigquery.dataEditor"
@@ -21,7 +21,7 @@ resource "google_project_iam_member" "bigquery_data_editor" {
 }
 
 resource "google_bigquery_dataset" "feedback_dataset" {
-  for_each      = local.deploy_project_ids
+  for_each      = var.create_bigquery_datasets ? local.deploy_project_ids : {}
   project       = each.value
   dataset_id    = replace("${var.project_name}_feedback", "-", "_")
   friendly_name = "${var.project_name}_feedback"
@@ -30,7 +30,7 @@ resource "google_bigquery_dataset" "feedback_dataset" {
 }
 
 resource "google_bigquery_dataset" "telemetry_logs_dataset" {
-  for_each      = local.deploy_project_ids
+  for_each      = var.create_bigquery_datasets ? local.deploy_project_ids : {}
   project       = each.value
   dataset_id    = replace("${var.project_name}_telemetry", "-", "_")
   friendly_name = "${var.project_name}_telemetry"
@@ -39,7 +39,7 @@ resource "google_bigquery_dataset" "telemetry_logs_dataset" {
 }
 
 module "log_export_to_bigquery" {
-  for_each = local.deploy_project_ids
+  for_each = var.create_bigquery_datasets ? local.deploy_project_ids : {}
 
   source  = "terraform-google-modules/log-export/google"
   version = "10.0.0"
@@ -55,7 +55,7 @@ module "log_export_to_bigquery" {
 }
 
 module "feedback_export_to_bigquery" {
-  for_each = local.deploy_project_ids
+  for_each = var.create_bigquery_datasets ? local.deploy_project_ids : {}
 
   source                 = "terraform-google-modules/log-export/google"
   version                = "10.0.0"

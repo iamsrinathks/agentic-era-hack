@@ -20,7 +20,7 @@ resource "google_service_account" "cicd_runner_sa" {
 }
 # Agent service account
 resource "google_service_account" "app_sa" {
-  for_each = local.deploy_project_ids
+  for_each = var.create_service_accounts ? local.deploy_project_ids : {}
 
   account_id   = "${var.project_name}-app"
   display_name = "${var.project_name} Agent Service Account"
