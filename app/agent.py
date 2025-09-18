@@ -12,12 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import datetime
 import os
-from zoneinfo import ZoneInfo
 
 import google.auth
 from google.adk.agents import Agent
+from google.adk.tools import ToolContext
+from app.subagents.discovery.agent import discovery_agent
+from app.subagents.security.agent import security_agent
+from app.subagents.infra.agent import infra_agent
+from app.prompts import return_instructions_root
 
 _, project_id = google.auth.default()
 os.environ.setdefault("GOOGLE_CLOUD_PROJECT", project_id)
@@ -25,42 +28,20 @@ os.environ.setdefault("GOOGLE_CLOUD_LOCATION", "global")
 os.environ.setdefault("GOOGLE_GENAI_USE_VERTEXAI", "True")
 
 
-def get_weather(query: str) -> str:
-    """Simulates a web search. Use it get information on weather.
-
-    Args:
-        query: A string containing the location to get weather information for.
-
-    Returns:
-        A string with the simulated weather information for the queried location.
-    """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        return "It's 60 degrees and foggy."
-    return "It's 90 degrees and sunny."
-
-
-def get_current_time(query: str) -> str:
-    """Simulates getting the current time for a city.
-
-    Args:
-        city: The name of the city to get the current time for.
-
-    Returns:
-        A string with the current time information.
-    """
-    if "sf" in query.lower() or "san francisco" in query.lower():
-        tz_identifier = "America/Los_Angeles"
-    else:
-        return f"Sorry, I don't have timezone information for query: {query}."
-
-    tz = ZoneInfo(tz_identifier)
-    now = datetime.datetime.now(tz)
-    return f"The current time for query {query} is {now.strftime('%Y-%m-%d %H:%M:%S %Z%z')}"
+def save_product_name(product_name: str, tool_context: ToolContext) -> dict:
+    """Saves the product name to the user's session state."""
+    tool_context.state["user:product_name"] = product_name
+    return {"status": "success"}
 
 
 root_agent = Agent(
-    name="root_agent",
-    model="gemini-2.5-flash-preview-native-audio-dialog",
-    instruction="You are a helpful AI assistant designed to provide accurate and useful information.",
-    tools=[get_weather, get_current_time],
+    name="csp_product_curation_agent",
+    model="gemini-2.5-pro",
+    instruction=return_instructions_root(),
+    tools=[save_product_name],
+    sub_agents=[discovery_agent, security_agent, infra_agent],
 )
+
+
+git config --global user.name "Your Name"
+git config --global user.email "04845233+iamsrinathks@users.noreply.github.com"
