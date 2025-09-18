@@ -1,25 +1,21 @@
-import test.functions
+package terraform.policies.resource_controls
+
 import input.plan as tfplan
 
-gcp_cloud_storage_labels := {
-  "title": "gcp_cloud_storage_labels",
-  "description": "ensure labels are set on the google cloud storage bucket",
+gcp_bucket_in_eu_region := {
+  "title": "Ensure GCS Buckets are in EU Region",
+  "description": "Ensure that all Google Cloud Storage buckets are provisioned in the EU region.",
   "severity": "HIGH",
-  "control_id": "gcp_cloud_storage_labels",
-  "ticket_id": "123",
+  "control_id": "gcp_bucket_in_eu_region",
+  "ticket_id": "456",
   "scope": "rule"
 }
 
 deny contains msg if {
-  exception_list := functions.load_exceptions(gcp_cloud_storage_labels.control_id)
-  some a in tfplan.resource_changes
-  a.type == "google_storage_bucket"
-  not is_null(a.change.after)
-  name := a.name
-  address := a.address
-  labels := object.get(a.change.after, "labels", {})
-  errors := functions.validate_labels_ids(labels)
-  count(errors) > 0
-  not functions.check_exceptions(a.name, exception_list)
-  msg := sprintf("Bucket %s at %s is missing mandatory labels.", [name, address])
+  some r in tfplan.resource_changes
+  r.type == "google_storage_bucket"
+  not is_null(r.change.after)
+  location := object.get(r.change.after, "location", "")
+  not startswith(location, "eu")
+  msg := sprintf("Bucket '%s' is not located in the EU region: Current location is '%s'.", [r.name, location])
 }
