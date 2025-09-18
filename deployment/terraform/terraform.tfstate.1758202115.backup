@@ -1,7 +1,7 @@
 {
   "version": 4,
   "terraform_version": "1.12.2",
-  "serial": 113,
+  "serial": 112,
   "lineage": "a6f17de5-3cd3-9bc9-fb67-2c1bec5b9992",
   "outputs": {},
   "resources": [
@@ -674,6 +674,62 @@
             "google_project_service.cicd_services",
             "google_project_service.deploy_project_services",
             "google_service_account.cicd_runner_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_cloudbuildv2_connection",
+      "name": "github_connection",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "annotations": {},
+            "bitbucket_cloud_config": [],
+            "bitbucket_data_center_config": [],
+            "create_time": "2025-09-18T10:18:09.412585321Z",
+            "disabled": false,
+            "effective_annotations": {},
+            "etag": "MRbExwDjQeuzarIGn_-m-DciIzds_kLC3UXQxqqTQPk",
+            "github_config": [
+              {
+                "app_installation_id": 86487302,
+                "authorizer_credential": [
+                  {
+                    "oauth_token_secret_version": "projects/qwiklabs-gcp-02-5a2c63d77393/secrets/github-pat/versions/latest",
+                    "username": ""
+                  }
+                ]
+              }
+            ],
+            "github_enterprise_config": [],
+            "gitlab_config": [],
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/connections/git-csp-product-curation-agent",
+            "installation_state": [
+              {
+                "action_uri": "",
+                "message": "",
+                "stage": "COMPLETE"
+              }
+            ],
+            "location": "us-central1",
+            "name": "git-csp-product-curation-agent",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "reconciling": false,
+            "timeouts": null,
+            "update_time": "2025-09-18T11:34:56.586207740Z"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "data.google_secret_manager_secret.github_pat",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
           ]
         }
       ]

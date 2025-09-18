@@ -77,3 +77,10 @@ resource "google_service_account_iam_member" "cicd_run_invoker_account_user" {
   member             = "serviceAccount:${resource.google_service_account.cicd_runner_sa.email}"
   depends_on         = [resource.google_project_service.cicd_services, resource.google_project_service.deploy_project_services]
 }
+
+resource "google_storage_bucket_iam_member" "logs_bucket_writer" {
+  for_each = google_storage_bucket.logs_data_bucket
+  bucket   = each.value.name
+  role     = "roles/storage.admin"
+  member   = "serviceAccount:${google_service_account.cicd_runner_sa.email}"
+}
