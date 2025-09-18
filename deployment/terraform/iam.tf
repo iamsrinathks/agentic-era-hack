@@ -56,7 +56,7 @@ resource "google_project_iam_member" "app_sa_roles" {
 
   project    = each.value.project
   role       = each.value.role
-  member     = "serviceAccount:${google_service_account.app_sa[split(",", each.key)[0]].email}"
+  member     = var.create_service_accounts ? "serviceAccount:${google_service_account.app_sa[split(",", each.key)[0]].email}" : ("serviceAccount:${var.project_name}-app@${each.value.project}.iam.gserviceaccount.com")
   depends_on = [resource.google_project_service.cicd_services, resource.google_project_service.deploy_project_services]
 }
 

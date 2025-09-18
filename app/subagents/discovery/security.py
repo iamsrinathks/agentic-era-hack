@@ -12,18 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-provider "google" {
-  region                = var.region
-  user_project_override = true
-}
+from google.adk.agents import Agent
+from google.adk.tools import google_search, VertexAiSearchTool
+from app.subagents.discovery.prompts import return_instructions_security
 
-resource "google_storage_bucket" "logs_data_bucket" {
-  name                        = "${var.dev_project_id}-${var.project_name}-logs-data"
-  location                    = var.region
-  project                     = var.dev_project_id
-  uniform_bucket_level_access = true
+# TODO: Replace with your actual data store ID
+vertex_search_tool = VertexAiSearchTool(data_store_id="YOUR_DATA_STORE_ID")
 
-  depends_on = [resource.google_project_service.services]
-}
-
-
+security_agent = Agent(
+    name="SecurityAgent",
+    model="gemini-2.5-pro",
+    instruction=return_instructions_security(),
+    tools=[google_search, vertex_search_tool],
+)

@@ -12,18 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-provider "google" {
-  region                = var.region
-  user_project_override = true
-}
-
-resource "google_storage_bucket" "logs_data_bucket" {
-  name                        = "${var.dev_project_id}-${var.project_name}-logs-data"
-  location                    = var.region
-  project                     = var.dev_project_id
-  uniform_bucket_level_access = true
-
-  depends_on = [resource.google_project_service.services]
-}
-
-
+def return_instructions_main_infra() -> str:
+    """Returns the instruction for the main infra agent."""
+    instruction_prompt_infra_v1 = """You are an infra agent. Your job is to assess the infrastructure of a given product."""
+    return instruction_prompt_infra_v1

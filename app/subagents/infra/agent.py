@@ -12,18 +12,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-provider "google" {
-  region                = var.region
-  user_project_override = true
-}
+from google.adk.agents import Agent
+from app.subagents.infra.prompts import return_instructions_main_infra
 
-resource "google_storage_bucket" "logs_data_bucket" {
-  name                        = "${var.dev_project_id}-${var.project_name}-logs-data"
-  location                    = var.region
-  project                     = var.dev_project_id
-  uniform_bucket_level_access = true
-
-  depends_on = [resource.google_project_service.services]
-}
-
-
+infra_agent = Agent(
+    name="InfraAgent",
+    model="gemini-2.5-pro",
+    instruction=return_instructions_main_infra(),
+)
