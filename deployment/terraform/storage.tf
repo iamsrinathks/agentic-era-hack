@@ -18,7 +18,7 @@ provider "google" {
 }
 
 resource "google_storage_bucket" "bucket_load_test_results" {
-  name                        = "${var.cicd_runner_project_id}-${var.project_name}-load-test"
+  name                        = "${var.cicd_runner_project_id}-loadtest-${formatdate("YYYYMMDD-hhmm", timestamp())}"
   location                    = var.region
   project                     = var.cicd_runner_project_id
   uniform_bucket_level_access = true
@@ -28,7 +28,7 @@ resource "google_storage_bucket" "bucket_load_test_results" {
 
 resource "google_storage_bucket" "logs_data_bucket" {
   for_each                    = toset(local.all_project_ids)
-  name                        = "${each.value}-${var.project_name}-logs-data"
+  name                        = "${each.value}-logs-${formatdate("YYYYMMDD-hhmm", timestamp())}"
   location                    = var.region
   project                     = each.value
   uniform_bucket_level_access = true
