@@ -1,5 +1,3 @@
-package terraform.policies.controls
-
 import test.functions
 import input.plan as tfplan
 
