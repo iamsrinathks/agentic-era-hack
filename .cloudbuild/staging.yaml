@@ -58,7 +58,7 @@ steps:
         pip install locust==2.31.1 --user
         locust -f tests/load_test/load_test.py \
         --headless \
-        -t 30s -u 2 -r 0.5 \
+        -t 10s -u 2 -r 0.5 \
         --csv=tests/load_test/.results/results \
         --html=tests/load_test/.results/report.html
     env:
@@ -110,7 +110,7 @@ substitutions:
   _STAGING_PROJECT_ID: YOUR_STAGING_PROJECT_ID
   _REGION: us-central1
 
-logsBucket: gs://${PROJECT_ID}-csp-product-curation-agent-logs-data/build-logs
+logsBucket: gs://${PROJECT_ID}-csp-curator-logs/build-logs
 options:
   substitutionOption: ALLOW_LOOSE
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET

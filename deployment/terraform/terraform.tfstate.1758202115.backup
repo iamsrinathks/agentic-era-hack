@@ -1,0 +1,2201 @@
+{
+  "version": 4,
+  "terraform_version": "1.12.2",
+  "serial": 112,
+  "lineage": "a6f17de5-3cd3-9bc9-fb67-2c1bec5b9992",
+  "outputs": {},
+  "resources": [
+    {
+      "mode": "data",
+      "type": "google_project",
+      "name": "projects",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod",
+          "schema_version": 0,
+          "attributes": {
+            "auto_create_network": null,
+            "billing_account": "012761-0D2F3D-499DCA",
+            "deletion_policy": "PREVENT",
+            "effective_labels": {
+              "fleet": "medium_extra"
+            },
+            "folder_id": "631960049652",
+            "id": "projects/qwiklabs-gcp-00-2c0e214cd9e4",
+            "labels": {
+              "fleet": "medium_extra"
+            },
+            "name": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "number": "993463501695",
+            "org_id": "",
+            "project_id": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "tags": null,
+            "terraform_labels": {
+              "fleet": "medium_extra"
+            }
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        },
+        {
+          "index_key": "staging",
+          "schema_version": 0,
+          "attributes": {
+            "auto_create_network": null,
+            "billing_account": "012761-0D2F3D-499DCA",
+            "deletion_policy": "PREVENT",
+            "effective_labels": {
+              "fleet": "medium_extra",
+              "generative-language": "enabled"
+            },
+            "folder_id": "519553078462",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393",
+            "labels": {
+              "fleet": "medium_extra",
+              "generative-language": "enabled"
+            },
+            "name": "qwiklabs-gcp-02-5a2c63d77393",
+            "number": "421445844116",
+            "org_id": "",
+            "project_id": "qwiklabs-gcp-02-5a2c63d77393",
+            "tags": null,
+            "terraform_labels": {
+              "fleet": "medium_extra",
+              "generative-language": "enabled"
+            }
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "data",
+      "type": "google_secret_manager_secret",
+      "name": "github_pat",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "mode": "managed",
+      "type": "github_repository",
+      "name": "repo",
+      "provider": "provider[\"registry.terraform.io/integrations/github\"]",
+      "instances": []
+    },
+    {
+      "mode": "managed",
+      "type": "google_bigquery_dataset",
+      "name": "feedback_dataset",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod",
+          "schema_version": 0,
+          "attributes": {
+            "access": [
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "",
+                "user_by_email": "student-03-cf7e273cada2@qwiklabs.net",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "projectOwners",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "READER",
+                "routine": [],
+                "special_group": "projectReaders",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "WRITER",
+                "routine": [],
+                "special_group": "projectWriters",
+                "user_by_email": "",
+                "view": []
+              }
+            ],
+            "creation_time": 1758187239723,
+            "dataset_id": "csp_product_curation_agent_feedback",
+            "default_collation": "",
+            "default_encryption_configuration": [],
+            "default_partition_expiration_ms": 0,
+            "default_table_expiration_ms": 0,
+            "delete_contents_on_destroy": false,
+            "description": "",
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "etag": "32MWqy/8Jq6hs/u4NQKYdw==",
+            "external_catalog_dataset_options": [],
+            "external_dataset_reference": [],
+            "friendly_name": "csp-product-curation-agent_feedback",
+            "id": "projects/qwiklabs-gcp-00-2c0e214cd9e4/datasets/csp_product_curation_agent_feedback",
+            "is_case_insensitive": false,
+            "labels": {},
+            "last_modified_time": 1758187239723,
+            "location": "us-central1",
+            "max_time_travel_hours": "168",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "resource_tags": {},
+            "self_link": "https://bigquery.googleapis.com/bigquery/v2/projects/qwiklabs-gcp-00-2c0e214cd9e4/datasets/csp_product_curation_agent_feedback",
+            "storage_billing_model": "",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        },
+        {
+          "index_key": "staging",
+          "schema_version": 0,
+          "attributes": {
+            "access": [
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "",
+                "user_by_email": "student-03-cf7e273cada2@qwiklabs.net",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "projectOwners",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "READER",
+                "routine": [],
+                "special_group": "projectReaders",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "WRITER",
+                "routine": [],
+                "special_group": "projectWriters",
+                "user_by_email": "",
+                "view": []
+              }
+            ],
+            "creation_time": 1758187239739,
+            "dataset_id": "csp_product_curation_agent_feedback",
+            "default_collation": "",
+            "default_encryption_configuration": [],
+            "default_partition_expiration_ms": 0,
+            "default_table_expiration_ms": 0,
+            "delete_contents_on_destroy": false,
+            "description": "",
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "etag": "/GAiPL4CBixhguQ6A7/M9g==",
+            "external_catalog_dataset_options": [],
+            "external_dataset_reference": [],
+            "friendly_name": "csp-product-curation-agent_feedback",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/datasets/csp_product_curation_agent_feedback",
+            "is_case_insensitive": false,
+            "labels": {},
+            "last_modified_time": 1758187239739,
+            "location": "us-central1",
+            "max_time_travel_hours": "168",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "resource_tags": {},
+            "self_link": "https://bigquery.googleapis.com/bigquery/v2/projects/qwiklabs-gcp-02-5a2c63d77393/datasets/csp_product_curation_agent_feedback",
+            "storage_billing_model": "",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_bigquery_dataset",
+      "name": "telemetry_logs_dataset",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod",
+          "schema_version": 0,
+          "attributes": {
+            "access": [
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "",
+                "user_by_email": "student-03-cf7e273cada2@qwiklabs.net",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "projectOwners",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "READER",
+                "routine": [],
+                "special_group": "projectReaders",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "WRITER",
+                "routine": [],
+                "special_group": "projectWriters",
+                "user_by_email": "",
+                "view": []
+              }
+            ],
+            "creation_time": 1758187239724,
+            "dataset_id": "csp_product_curation_agent_telemetry",
+            "default_collation": "",
+            "default_encryption_configuration": [],
+            "default_partition_expiration_ms": 0,
+            "default_table_expiration_ms": 0,
+            "delete_contents_on_destroy": false,
+            "description": "",
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "etag": "+d4uM7IuNv4R0UIm/Qlb0Q==",
+            "external_catalog_dataset_options": [],
+            "external_dataset_reference": [],
+            "friendly_name": "csp-product-curation-agent_telemetry",
+            "id": "projects/qwiklabs-gcp-00-2c0e214cd9e4/datasets/csp_product_curation_agent_telemetry",
+            "is_case_insensitive": false,
+            "labels": {},
+            "last_modified_time": 1758187239724,
+            "location": "us-central1",
+            "max_time_travel_hours": "168",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "resource_tags": {},
+            "self_link": "https://bigquery.googleapis.com/bigquery/v2/projects/qwiklabs-gcp-00-2c0e214cd9e4/datasets/csp_product_curation_agent_telemetry",
+            "storage_billing_model": "",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        },
+        {
+          "index_key": "staging",
+          "schema_version": 0,
+          "attributes": {
+            "access": [
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "",
+                "user_by_email": "student-03-cf7e273cada2@qwiklabs.net",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "OWNER",
+                "routine": [],
+                "special_group": "projectOwners",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "READER",
+                "routine": [],
+                "special_group": "projectReaders",
+                "user_by_email": "",
+                "view": []
+              },
+              {
+                "condition": [],
+                "dataset": [],
+                "domain": "",
+                "group_by_email": "",
+                "iam_member": "",
+                "role": "WRITER",
+                "routine": [],
+                "special_group": "projectWriters",
+                "user_by_email": "",
+                "view": []
+              }
+            ],
+            "creation_time": 1758187239723,
+            "dataset_id": "csp_product_curation_agent_telemetry",
+            "default_collation": "",
+            "default_encryption_configuration": [],
+            "default_partition_expiration_ms": 0,
+            "default_table_expiration_ms": 0,
+            "delete_contents_on_destroy": false,
+            "description": "",
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "etag": "BXWwIi5dK8HrwqW7felW/g==",
+            "external_catalog_dataset_options": [],
+            "external_dataset_reference": [],
+            "friendly_name": "csp-product-curation-agent_telemetry",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/datasets/csp_product_curation_agent_telemetry",
+            "is_case_insensitive": false,
+            "labels": {},
+            "last_modified_time": 1758187239723,
+            "location": "us-central1",
+            "max_time_travel_hours": "168",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "resource_tags": {},
+            "self_link": "https://bigquery.googleapis.com/bigquery/v2/projects/qwiklabs-gcp-02-5a2c63d77393/datasets/csp_product_curation_agent_telemetry",
+            "storage_billing_model": "",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_cloudbuild_trigger",
+      "name": "cd_pipeline",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "approval_config": [
+              {
+                "approval_required": false
+              }
+            ],
+            "bitbucket_server_trigger_config": [],
+            "build": [],
+            "create_time": "2025-09-18T12:09:00.692597367Z",
+            "description": "Trigger for CD pipeline",
+            "disabled": false,
+            "filename": ".cloudbuild/staging.yaml",
+            "filter": "",
+            "git_file_source": [],
+            "github": [],
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/triggers/6aeb2575-b23b-41f7-8f96-1a3b9076b1f3",
+            "ignored_files": [],
+            "include_build_logs": "INCLUDE_BUILD_LOGS_WITH_STATUS",
+            "included_files": [
+              "app/**",
+              "data_ingestion/**",
+              "tests/**",
+              "deployment/**",
+              "uv.lock"
+            ],
+            "location": "us-central1",
+            "name": "cd-csp-product-curation-agent",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "pubsub_config": [],
+            "repository_event_config": [
+              {
+                "pull_request": [],
+                "push": [
+                  {
+                    "branch": "main",
+                    "invert_regex": false,
+                    "tag": ""
+                  }
+                ],
+                "repository": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/connections/git-csp-product-curation-agent/repositories/agentic-era-hack"
+              }
+            ],
+            "service_account": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "source_to_build": [],
+            "substitutions": {
+              "_APP_SA_EMAIL_STAGING": "csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+              "_BUCKET_NAME_LOAD_TEST_RESULTS": "qwiklabs-gcp-02-5a2c63d77393-loadtest-20250918-1324",
+              "_REGION": "us-central1",
+              "_STAGING_PROJECT_ID": "qwiklabs-gcp-02-5a2c63d77393"
+            },
+            "tags": [],
+            "timeouts": null,
+            "trigger_id": "6aeb2575-b23b-41f7-8f96-1a3b9076b1f3",
+            "trigger_template": [],
+            "webhook_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa",
+            "google_service_account.cicd_runner_sa",
+            "google_storage_bucket.bucket_load_test_results"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_cloudbuild_trigger",
+      "name": "deploy_to_prod_pipeline",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "approval_config": [
+              {
+                "approval_required": true
+              }
+            ],
+            "bitbucket_server_trigger_config": [],
+            "build": [],
+            "create_time": "2025-09-18T13:24:23.516150171Z",
+            "description": "Trigger for deployment to production",
+            "disabled": false,
+            "filename": ".cloudbuild/deploy-to-prod.yaml",
+            "filter": "",
+            "git_file_source": [],
+            "github": [],
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/triggers/8db57626-cc05-43f8-bc17-e179d0219ada",
+            "ignored_files": null,
+            "include_build_logs": "INCLUDE_BUILD_LOGS_WITH_STATUS",
+            "included_files": null,
+            "location": "us-central1",
+            "name": "deploy-csp-product-curation-agent",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "pubsub_config": [],
+            "repository_event_config": [
+              {
+                "pull_request": [],
+                "push": [],
+                "repository": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/connections/git-csp-product-curation-agent/repositories/agentic-era-hack"
+              }
+            ],
+            "service_account": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "source_to_build": [],
+            "substitutions": {
+              "_APP_SA_EMAIL_PROD": "csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+              "_PROD_PROJECT_ID": "qwiklabs-gcp-00-2c0e214cd9e4",
+              "_REGION": "us-central1"
+            },
+            "tags": null,
+            "timeouts": null,
+            "trigger_id": "8db57626-cc05-43f8-bc17-e179d0219ada",
+            "trigger_template": [],
+            "webhook_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa",
+            "google_service_account.cicd_runner_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_cloudbuild_trigger",
+      "name": "pr_checks",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 2,
+          "attributes": {
+            "approval_config": [
+              {
+                "approval_required": false
+              }
+            ],
+            "bitbucket_server_trigger_config": [],
+            "build": [],
+            "create_time": "2025-09-18T12:08:54.883874432Z",
+            "description": "Trigger for PR checks",
+            "disabled": false,
+            "filename": ".cloudbuild/pr_checks.yaml",
+            "filter": "",
+            "git_file_source": [],
+            "github": [],
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/triggers/97252d9f-7e72-4a41-95e4-5ce5ec754f14",
+            "ignored_files": [],
+            "include_build_logs": "INCLUDE_BUILD_LOGS_WITH_STATUS",
+            "included_files": [
+              "app/**",
+              "data_ingestion/**",
+              "tests/**",
+              "deployment/**",
+              "uv.lock"
+            ],
+            "location": "us-central1",
+            "name": "pr-csp-product-curation-agent",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "pubsub_config": [],
+            "repository_event_config": [
+              {
+                "pull_request": [
+                  {
+                    "branch": "main",
+                    "comment_control": "",
+                    "invert_regex": false
+                  }
+                ],
+                "push": [],
+                "repository": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/connections/git-csp-product-curation-agent/repositories/agentic-era-hack"
+              }
+            ],
+            "service_account": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "source_to_build": [],
+            "substitutions": {},
+            "tags": [],
+            "timeouts": null,
+            "trigger_id": "97252d9f-7e72-4a41-95e4-5ce5ec754f14",
+            "trigger_template": [],
+            "webhook_config": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMiJ9",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_cloudbuildv2_connection",
+      "name": "github_connection",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "annotations": {},
+            "bitbucket_cloud_config": [],
+            "bitbucket_data_center_config": [],
+            "create_time": "2025-09-18T10:18:09.412585321Z",
+            "disabled": false,
+            "effective_annotations": {},
+            "etag": "MRbExwDjQeuzarIGn_-m-DciIzds_kLC3UXQxqqTQPk",
+            "github_config": [
+              {
+                "app_installation_id": 86487302,
+                "authorizer_credential": [
+                  {
+                    "oauth_token_secret_version": "projects/qwiklabs-gcp-02-5a2c63d77393/secrets/github-pat/versions/latest",
+                    "username": ""
+                  }
+                ]
+              }
+            ],
+            "github_enterprise_config": [],
+            "gitlab_config": [],
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/connections/git-csp-product-curation-agent",
+            "installation_state": [
+              {
+                "action_uri": "",
+                "message": "",
+                "stage": "COMPLETE"
+              }
+            ],
+            "location": "us-central1",
+            "name": "git-csp-product-curation-agent",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "reconciling": false,
+            "timeouts": null,
+            "update_time": "2025-09-18T11:34:56.586207740Z"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "data.google_secret_manager_secret.github_pat",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_cloudbuildv2_repository",
+      "name": "repo",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_iam_member",
+      "name": "app_sa_roles",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod,roles/aiplatform.user",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/aiplatform.user/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/aiplatform.user"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "prod,roles/cloudtrace.agent",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/cloudtrace.agent/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/cloudtrace.agent"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "prod,roles/discoveryengine.editor",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/discoveryengine.editor/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/discoveryengine.editor"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "prod,roles/logging.logWriter",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/logging.logWriter/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/logging.logWriter"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "prod,roles/serviceusage.serviceUsageConsumer",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/serviceusage.serviceUsageConsumer/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/serviceusage.serviceUsageConsumer"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "prod,roles/storage.admin",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/storage.admin/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/storage.admin"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "staging,roles/aiplatform.user",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/aiplatform.user/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/aiplatform.user"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "staging,roles/cloudtrace.agent",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/cloudtrace.agent/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/cloudtrace.agent"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "staging,roles/discoveryengine.editor",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/discoveryengine.editor/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/discoveryengine.editor"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "staging,roles/logging.logWriter",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/logging.logWriter/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/logging.logWriter"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "staging,roles/serviceusage.serviceUsageConsumer",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/serviceusage.serviceUsageConsumer/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/serviceusage.serviceUsageConsumer"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        },
+        {
+          "index_key": "staging,roles/storage.admin",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/storage.admin/serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/storage.admin"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.app_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_iam_member",
+      "name": "bigquery_data_editor",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/bigquery.dataEditor/serviceAccount:service-993463501695@gcp-sa-logging.iam.gserviceaccount.com",
+            "member": "serviceAccount:service-993463501695@gcp-sa-logging.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/bigquery.dataEditor"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_bigquery_dataset.telemetry_logs_dataset",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "module.log_export_to_bigquery.google_logging_billing_account_sink.sink",
+            "module.log_export_to_bigquery.google_logging_folder_sink.sink",
+            "module.log_export_to_bigquery.google_logging_organization_sink.sink",
+            "module.log_export_to_bigquery.google_logging_project_sink.sink"
+          ]
+        },
+        {
+          "index_key": "staging",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/bigquery.dataEditor/serviceAccount:service-421445844116@gcp-sa-logging.iam.gserviceaccount.com",
+            "member": "serviceAccount:service-421445844116@gcp-sa-logging.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/bigquery.dataEditor"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_bigquery_dataset.telemetry_logs_dataset",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "module.log_export_to_bigquery.google_logging_billing_account_sink.sink",
+            "module.log_export_to_bigquery.google_logging_folder_sink.sink",
+            "module.log_export_to_bigquery.google_logging_organization_sink.sink",
+            "module.log_export_to_bigquery.google_logging_project_sink.sink"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_iam_member",
+      "name": "cicd_project_roles",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "roles/aiplatform.user",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/aiplatform.user/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/aiplatform.user"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "roles/artifactregistry.writer",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/artifactregistry.writer/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/artifactregistry.writer"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "roles/cloudbuild.builds.builder",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/cloudbuild.builds.builder/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/cloudbuild.builds.builder"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "roles/cloudtrace.agent",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/cloudtrace.agent/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/cloudtrace.agent"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "roles/discoveryengine.editor",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/discoveryengine.editor/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/discoveryengine.editor"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "roles/logging.logWriter",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/logging.logWriter/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/logging.logWriter"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "roles/storage.admin",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/storage.admin/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/storage.admin"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_iam_member",
+      "name": "other_projects_roles",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod-roles/aiplatform.user",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/aiplatform.user/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/aiplatform.user"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "prod-roles/iam.serviceAccountUser",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/iam.serviceAccountUser/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/iam.serviceAccountUser"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "prod-roles/storage.admin",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0ISPFg=",
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/roles/storage.admin/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "role": "roles/storage.admin"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "staging-roles/aiplatform.user",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/aiplatform.user/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/aiplatform.user"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "staging-roles/iam.serviceAccountUser",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/iam.serviceAccountUser/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/iam.serviceAccountUser"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        },
+        {
+          "index_key": "staging-roles/storage.admin",
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/E0IgLIM=",
+            "id": "qwiklabs-gcp-02-5a2c63d77393/roles/storage.admin/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "role": "roles/storage.admin"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "cicd_cloud_resource_manager_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/cloudresourcemanager.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "cloudresourcemanager.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "cicd_services",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/cloudbuild.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "cloudbuild.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": 1,
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/discoveryengine.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "discoveryengine.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": 2,
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/aiplatform.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "aiplatform.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": 3,
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/serviceusage.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "serviceusage.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": 4,
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/bigquery.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "bigquery.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": 5,
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/cloudresourcemanager.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "cloudresourcemanager.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": 6,
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/cloudtrace.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "cloudtrace.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "deploy_project_services",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod_aiplatform_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/aiplatform.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "aiplatform.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_bigquery_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/bigquery.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "bigquery.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_cloudresourcemanager_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/cloudresourcemanager.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "cloudresourcemanager.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_cloudtrace_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/cloudtrace.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "cloudtrace.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_discoveryengine_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/discoveryengine.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "discoveryengine.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_iam_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/iam.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "iam.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_logging_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/logging.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "logging.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_run_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/run.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "run.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "prod_serviceusage_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-00-2c0e214cd9e4/serviceusage.googleapis.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "service": "serviceusage.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_aiplatform_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/aiplatform.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "aiplatform.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_bigquery_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/bigquery.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "bigquery.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_cloudresourcemanager_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/cloudresourcemanager.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "cloudresourcemanager.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_cloudtrace_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/cloudtrace.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "cloudtrace.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_discoveryengine_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/discoveryengine.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "discoveryengine.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_iam_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/iam.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "iam.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_logging_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/logging.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "logging.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_run_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/run.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "run.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        },
+        {
+          "index_key": "staging_serviceusage_googleapis_com",
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": false,
+            "id": "qwiklabs-gcp-02-5a2c63d77393/serviceusage.googleapis.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "service": "serviceusage.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_service_account",
+      "name": "app_sa",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": "prod",
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "csp-product-curation-agent-app",
+            "create_ignore_already_exists": null,
+            "description": "",
+            "disabled": false,
+            "display_name": "csp-product-curation-agent Agent Service Account",
+            "email": "csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "id": "projects/qwiklabs-gcp-00-2c0e214cd9e4/serviceAccounts/csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "name": "projects/qwiklabs-gcp-00-2c0e214cd9e4/serviceAccounts/csp-product-curation-agent-app@qwiklabs-gcp-00-2c0e214cd9e4.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "timeouts": null,
+            "unique_id": "107105156981340212476"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDB9fQ==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        },
+        {
+          "index_key": "staging",
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "csp-product-curation-agent-app",
+            "create_ignore_already_exists": null,
+            "description": "",
+            "disabled": false,
+            "display_name": "csp-product-curation-agent Agent Service Account",
+            "email": "csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "name": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-app@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "timeouts": null,
+            "unique_id": "109997265851787749465"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDB9fQ==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_service_account",
+      "name": "cicd_runner_sa",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "csp-product-curation-agent-cb",
+            "create_ignore_already_exists": null,
+            "description": "",
+            "disabled": false,
+            "display_name": "CICD Runner SA",
+            "email": "csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "name": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "timeouts": null,
+            "unique_id": "110172059063114262563"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDB9fQ==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_service_account_iam_member",
+      "name": "cicd_run_invoker_account_user",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/D983/00=",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com/roles/iam.serviceAccountUser/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "role": "roles/iam.serviceAccountUser",
+            "service_account_id": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_service_account_iam_member",
+      "name": "cicd_run_invoker_token_creator",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "condition": [],
+            "etag": "BwY/D983/00=",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com/roles/iam.serviceAccountTokenCreator/serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "member": "serviceAccount:csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com",
+            "role": "roles/iam.serviceAccountTokenCreator",
+            "service_account_id": "projects/qwiklabs-gcp-02-5a2c63d77393/serviceAccounts/csp-product-curation-agent-cb@qwiklabs-gcp-02-5a2c63d77393.iam.gserviceaccount.com"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services",
+            "google_service_account.cicd_runner_sa"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_storage_bucket",
+      "name": "bucket_load_test_results",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 3,
+          "attributes": {
+            "autoclass": [],
+            "cors": [],
+            "custom_placement_config": [],
+            "default_event_based_hold": false,
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "enable_object_retention": false,
+            "encryption": [],
+            "force_destroy": true,
+            "hierarchical_namespace": [
+              {
+                "enabled": false
+              }
+            ],
+            "id": "qwiklabs-gcp-02-5a2c63d77393-loadtest-20250918-1324",
+            "ip_filter": [],
+            "labels": null,
+            "lifecycle_rule": [],
+            "location": "US-CENTRAL1",
+            "logging": [],
+            "name": "qwiklabs-gcp-02-5a2c63d77393-loadtest-20250918-1324",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "project_number": 421445844116,
+            "public_access_prevention": "inherited",
+            "requester_pays": false,
+            "retention_policy": [],
+            "rpo": null,
+            "self_link": "https://www.googleapis.com/storage/v1/b/qwiklabs-gcp-02-5a2c63d77393-loadtest-20250918-1324",
+            "soft_delete_policy": [
+              {
+                "effective_time": "2025-09-18T13:24:25.172Z",
+                "retention_duration_seconds": 604800
+              }
+            ],
+            "storage_class": "STANDARD",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "time_created": "2025-09-18T13:24:25.172Z",
+            "timeouts": null,
+            "uniform_bucket_level_access": true,
+            "updated": "2025-09-18T13:24:25.172Z",
+            "url": "gs://qwiklabs-gcp-02-5a2c63d77393-loadtest-20250918-1324",
+            "versioning": [],
+            "website": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsInJlYWQiOjI0MDAwMDAwMDAwMCwidXBkYXRlIjoyNDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjMifQ==",
+          "dependencies": [
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_billing_account_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_folder_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_organization_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_project_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "bigquery_options": [
+              {
+                "use_partitioned_tables": true
+              }
+            ],
+            "custom_writer_identity": null,
+            "description": "",
+            "destination": "bigquery.googleapis.com/projects/qwiklabs-gcp-00-2c0e214cd9e4/datasets/csp_product_curation_agent_feedback",
+            "disabled": false,
+            "exclusions": [],
+            "filter": "jsonPayload.log_type=\"feedback\"",
+            "id": "projects/qwiklabs-gcp-00-2c0e214cd9e4/sinks/csp-product-curation-agent_feedback",
+            "name": "csp-product-curation-agent_feedback",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "unique_writer_identity": true,
+            "writer_identity": "serviceAccount:service-993463501695@gcp-sa-logging.iam.gserviceaccount.com"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_bigquery_dataset.feedback_dataset",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_billing_account_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_folder_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_organization_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.feedback_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_project_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "bigquery_options": [
+              {
+                "use_partitioned_tables": true
+              }
+            ],
+            "custom_writer_identity": null,
+            "description": "",
+            "destination": "bigquery.googleapis.com/projects/qwiklabs-gcp-02-5a2c63d77393/datasets/csp_product_curation_agent_feedback",
+            "disabled": false,
+            "exclusions": [],
+            "filter": "jsonPayload.log_type=\"feedback\"",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/sinks/csp-product-curation-agent_feedback",
+            "name": "csp-product-curation-agent_feedback",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "unique_writer_identity": true,
+            "writer_identity": "serviceAccount:service-421445844116@gcp-sa-logging.iam.gserviceaccount.com"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_bigquery_dataset.feedback_dataset",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_billing_account_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_folder_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_organization_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"prod\"]",
+      "mode": "managed",
+      "type": "google_logging_project_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "bigquery_options": [
+              {
+                "use_partitioned_tables": true
+              }
+            ],
+            "custom_writer_identity": null,
+            "description": "",
+            "destination": "bigquery.googleapis.com/projects/qwiklabs-gcp-00-2c0e214cd9e4/datasets/csp_product_curation_agent_telemetry",
+            "disabled": false,
+            "exclusions": [],
+            "filter": "labels.service_name=\"csp-product-curation-agent\" labels.type=\"agent_telemetry\"",
+            "id": "projects/qwiklabs-gcp-00-2c0e214cd9e4/sinks/csp-product-curation-agent_telemetry",
+            "name": "csp-product-curation-agent_telemetry",
+            "project": "qwiklabs-gcp-00-2c0e214cd9e4",
+            "unique_writer_identity": true,
+            "writer_identity": "serviceAccount:service-993463501695@gcp-sa-logging.iam.gserviceaccount.com"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_bigquery_dataset.telemetry_logs_dataset",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_billing_account_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_folder_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_organization_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": []
+    },
+    {
+      "module": "module.log_export_to_bigquery[\"staging\"]",
+      "mode": "managed",
+      "type": "google_logging_project_sink",
+      "name": "sink",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "index_key": 0,
+          "schema_version": 0,
+          "attributes": {
+            "bigquery_options": [
+              {
+                "use_partitioned_tables": true
+              }
+            ],
+            "custom_writer_identity": null,
+            "description": "",
+            "destination": "bigquery.googleapis.com/projects/qwiklabs-gcp-02-5a2c63d77393/datasets/csp_product_curation_agent_telemetry",
+            "disabled": false,
+            "exclusions": [],
+            "filter": "labels.service_name=\"csp-product-curation-agent\" labels.type=\"agent_telemetry\"",
+            "id": "projects/qwiklabs-gcp-02-5a2c63d77393/sinks/csp-product-curation-agent_telemetry",
+            "name": "csp-product-curation-agent_telemetry",
+            "project": "qwiklabs-gcp-02-5a2c63d77393",
+            "unique_writer_identity": true,
+            "writer_identity": "serviceAccount:service-421445844116@gcp-sa-logging.iam.gserviceaccount.com"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_bigquery_dataset.telemetry_logs_dataset",
+            "google_project_service.cicd_services",
+            "google_project_service.deploy_project_services"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

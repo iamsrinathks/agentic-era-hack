@@ -1,0 +1,6 @@
+name: staging-deployment-trigger
+repositoryEventConfig:
+  repository: projects/qwiklabs-gcp-02-5a2c63d77393/locations/us-central1/connections/git-csp-product-curation-agent/repositories/agentic-era-hack
+  push:
+    branch: ^main$
+filename: .cloudbuild/staging.yaml

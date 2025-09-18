@@ -1,0 +1,14 @@
+{
+  "display_name": "DataFusion No Private IP",
+  "description": "Detects Data Fusion instances not configured to use private IP addresses, which can be a security risk for sensitive data processing.",
+  "custom_config": {
+    "predicate": {
+      "expression": "resource.isPrivateIpEnabled is false"
+    },
+    "resource_selector": {
+      "resource_types": ["datafusion.googleapis.com/Instance"]
+    },
+    "severity": "HIGH",
+    "recommendation": "Enable private IP for Data Fusion instances to enhance network isolation and reduce exposure."
+  }
+}
