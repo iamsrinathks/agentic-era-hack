@@ -41,7 +41,3 @@ root_agent = Agent(
     tools=[save_product_name],
     sub_agents=[discovery_agent, security_agent, infra_agent],
 )
-
-
-git config --global user.name "Your Name"
-git config --global user.email "04845233+iamsrinathks@users.noreply.github.com"
