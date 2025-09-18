@@ -14,7 +14,7 @@
 
 from google.adk.agents import Agent
 from google.adk.tools import google_search, VertexAiSearchTool
-from app.subagents.discovery.prompts import return_instructions_product_overview
+from agent_era_hack.app.subagents.discovery.prompts import return_instructions_product_overview
 
 # TODO: Replace with your actual data store ID
 vertex_search_tool = VertexAiSearchTool(data_store_id="projects/421445844116/locations/us/collections/default_collection/dataStores/curation-csp-datastore_1758067422268")

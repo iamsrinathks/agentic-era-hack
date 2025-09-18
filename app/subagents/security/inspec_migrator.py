@@ -13,19 +13,15 @@
 # limitations under the License.
 
 from google.adk.agents import Agent
-from google.adk.tools import ToolContext
-
-def migrate_inspec_to_sha(inspec_policy_path: str, tool_context: ToolContext) -> dict:
-    """Migrates a Chef Inspec policy to a custom SHA policy."""
-    # Placeholder for actual implementation
-    print(f"Migrating Inspec policy from '{inspec_policy_path}' to a new SHA Policy.")
-    # In a real implementation, you would read the file, translate the logic,
-    # and then use a tool to write the new policy.
-    return {"status": "success", "message": f"Migration of '{inspec_policy_path}' initiated."}
 
 inspec_migrator_agent = Agent(
     name="InspecMigratorAgent",
     model="gemini-2.5-flash",
-    instruction="You are a policy migration specialist. Your job is to migrate Chef Inspec policies to Google Cloud custom SHA Policies for the product: {user:product_name}.",
-    tools=[migrate_inspec_to_sha],
+    instruction="""You are a policy migration specialist. Your job is to migrate Chef Inspec policies to Google Cloud custom SHA Policies for the product: {user:product_name}.
+
+You MUST follow this workflow:
+1.  Use the `get_contents` tool to find and read the Inspec policies in the repository.
+2.  Translate the Inspec policy to a custom SHA Policy.
+3.  Use the `push_multiple_files` tool to commit the new SHA Policy to the repository.
+""",
 )

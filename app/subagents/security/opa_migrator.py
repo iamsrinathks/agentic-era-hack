@@ -13,21 +13,17 @@
 # limitations under the License.
 
 from google.adk.agents import Agent
-from google.adk.tools import ToolContext
-
-def migrate_rego_to_org_policy(rego_policy_path: str, tool_context: ToolContext) -> dict:
-    """Migrates an OPA Rego policy to a custom Organization Policy."""
-    # Placeholder for actual implementation
-    print(f"Migrating Rego policy from '{rego_policy_path}' to a new Org Policy.")
-    # In a real implementation, you would read the file, translate the logic,
-    # and then use a tool to write the new policy.
-    return {"status": "success", "message": f"Migration of '{rego_policy_path}' initiated."}
 
 opa_migrator_agent = Agent(
     name="OpaMigratorAgent",
     model="gemini-2.5-flash",
-    instruction="You are a policy migration specialist. Your job is to migrate OPA Rego policies to Google Cloud custom Organization Policies for the product: {user:product_name}.",
-    tools=[migrate_rego_to_org_policy],
+    instruction="""You are a policy migration specialist. Your job is to migrate OPA Rego policies to Google Cloud custom Organization Policies for the product: {user:product_name}.
+
+You MUST follow this workflow:
+1.  Use the `get_contents` tool to find and read the Rego policies in the repository.
+2.  Translate the Rego policy to a custom Organization Policy.
+3.  Use the `push_multiple_files` tool to commit the new Organization Policy to the repository.
+""",,
 )
 
 

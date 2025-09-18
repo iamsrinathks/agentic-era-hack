@@ -107,6 +107,7 @@ def deploy_agent_engine_app(
 
     agent_engine = AgentEngineApp(
         agent=root_agent,
+        enable_tracing=True,
         artifact_service_builder=lambda: GcsArtifactService(
             bucket_name=artifacts_bucket_name
         ),
@@ -119,7 +120,7 @@ def deploy_agent_engine_app(
     agent_config = {
         "agent_engine": agent_engine,
         "display_name": agent_name,
-        "description": "A base ReAct agent built with Google's Agent Development Kit (ADK)",
+        "description": "A base ReAct agent built with Google\'s Agent Development Kit (ADK)",
         "extra_packages": extra_packages,
         "env_vars": env_vars,
         "service_account": service_account,
