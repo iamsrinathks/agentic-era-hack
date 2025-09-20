@@ -14,10 +14,11 @@
 
 from google.adk.agents import Agent
 from google.adk.tools import google_search, VertexAiSearchTool
-from agent_era_hack.app.subagents.discovery.prompts import return_instructions_discovery_security
+#from agent_era_hack.app.subagents.discovery.prompts import return_instructions_discovery_security
+from app.subagents.discovery.prompts import return_instructions_discovery_security
 
 # TODO: Replace with your actual data store ID
-vertex_search_tool = VertexAiSearchTool(data_store_id="projects/421445844116/locations/us/collections/default_collection/dataStores/curation-csp-datastore_1758067422268")
+vertex_search_tool = VertexAiSearchTool(data_store_id="projects/339258993962/locations/global/collections/default_collection/dataStores/dds-discovery-agent-vai-ds")
 
 discovery_security_agent = Agent(
     name="DiscoverySecurityAgent",

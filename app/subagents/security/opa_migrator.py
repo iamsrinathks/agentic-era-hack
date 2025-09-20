@@ -23,7 +23,7 @@ You MUST follow this workflow:
 1.  Use the `get_contents` tool to find and read the Rego policies in the repository.
 2.  Translate the Rego policy to a custom Organization Policy.
 3.  Use the `push_multiple_files` tool to commit the new Organization Policy to the repository.
-""",,
+"""
 )
 
 

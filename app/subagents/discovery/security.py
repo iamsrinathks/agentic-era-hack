@@ -14,7 +14,8 @@
 
 from google.adk.agents import Agent
 from google.adk.tools import google_search, VertexAiSearchTool
-from agent_era_hack.app.subagents.discovery.prompts import return_instructions_security
+#from agent_era_hack.app.subagents.discovery.prompts import return_instructions_security
+from app.subagents.discovery.prompts import return_instructions_security
 
 # TODO: Replace with your actual data store ID
 vertex_search_tool = VertexAiSearchTool(data_store_id="YOUR_DATA_STORE_ID")

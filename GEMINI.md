@@ -915,6 +915,61 @@ Tools extend an agent's abilities beyond text generation.
     *   **`ApplicationIntegrationToolset`**: Turns Application Integration workflows and Integration Connectors (e.g., Salesforce, SAP) into callable tools.
     *   **Toolbox for Databases**: An open-source MCP server that ADK can connect to for database interactions.
 
+6.  **MCP Tools**: 
+    The **Model Context Protocol (MCP)** is an open standard for connecting LLMs (like Gemini or Claude) to external tools, data sources, and applications.  
+    It uses a **client–server architecture**:
+
+    - **MCP Server**: Exposes resources, prompts, and tools.
+    - **MCP Client**: Consumes these capabilities (e.g., an ADK agent).
+
+    Two main integration patterns:
+
+    1. **Using existing MCP servers in ADK** – ADK agent acts as MCP client.
+    2. **Exposing ADK tools via MCP server** – MCP server wraps ADK tools.
+
+    ## 1. Using MCP Servers with ADK Agents
+
+    ### `MCPToolset` Class
+
+    Handles:
+    - **Connection**: Local (`StdioConnectionParams`) or remote (`SseConnectionParams` / `StreamableHTTPConnectionParams`).
+    - **Tool Discovery**: Calls `list_tools` on MCP server, converts to ADK `BaseTool`.
+    - **Tool Exposure**: Makes them available to `LlmAgent`.
+    - **Proxy Calls**: Uses `call_tool` to execute remotely.
+    - **Filtering**: Optional `tool_filter` to limit tools.
+
+     ## 2. Building an MCP Server with ADK Tools
+
+    **Goal:** Wrap ADK tools so any MCP client can use them.
+
+    **Steps:**
+    1. Create MCP server script (Python, using `mcp` library).
+    2. Instantiate ADK tool(s).
+    3. Implement:
+    - `@app.list_tools()` → return tools in MCP schema (use `adk_to_mcp_tool_type`).
+    - `@app.call_tool()` → execute ADK tool’s `.run_async()` and return MCP `Content`.
+    4. Test with ADK agent using `MCPToolset`.
+
+    ## Deployment with MCP Tools
+
+    **Critical:** In production, define agent synchronously in `agent.py`.
+
+    ### Deployment Patterns
+
+    1. **Self-contained stdio MCP servers** – packaged in same container.
+    2. **Remote MCP servers (Streamable HTTP)** – separate scalable service.
+    3. **Sidecar MCP servers (GKE)** – MCP server runs alongside agent in same pod.
+
+    ## Connection Management
+
+    - **Stdio**: Simple, local, but less scalable.
+    - **SSE/HTTP**: Network-based, scalable, requires auth.
+
+    ## Troubleshooting
+
+    - **Stdio startup failures**: Check process command & env.
+    - **Network issues**: Test connectivity.
+    - **Resource exhaustion**: Monitor memory/CPU.
 ---
 
 ## 8. Context, State, and Memory Management
@@ -1117,6 +1172,31 @@ Enabling agents to securely access protected external resources.
 
 *   **`AuthScheme`**: Defines *how* an API expects authentication (e.g., `APIKey`, `HTTPBearer`, `OAuth2`, `OpenIdConnectWithConfig`).
 *   **`AuthCredential`**: Holds *initial* information to *start* the auth process (e.g., API key value, OAuth client ID/secret).
+
+    **`Tool Types`**
+    - `RestApiTool` / `OpenAPIToolset`: Pass `auth_scheme` and `auth_credential` during setup
+    - `GoogleApiToolSet`: Use built-in config methods
+    - `APIHubToolset` / `ApplicationIntegrationToolset`: Same as OpenAPI tools
+
+    > ⚠️ **Security Tip**: Avoid storing sensitive tokens in session state. Use secret managers like Google Cloud Secret Manager or HashiCorp Vault for production.
+
+    #### Example: API Key with OpenAPI Toolset
+
+    ```python
+    from google.adk.tools.openapi_tool.auth.auth_helpers import token_to_scheme_credential
+    from google.adk.tools.openapi_tool.openapi_spec_parser.openapi_toolset import OpenAPIToolset
+
+    auth_scheme, auth_credential = token_to_scheme_credential(
+        "apikey", "query", "apikey", "YOUR_API_KEY_STRING"
+    )
+
+    sample_api_toolset = OpenAPIToolset(
+        spec_str="...",
+        spec_str_type="yaml",
+        auth_scheme=auth_scheme,
+        auth_credential=auth_credential,
+    )
+
 
 ### 11.2 Interactive OAuth/OIDC Flows
 

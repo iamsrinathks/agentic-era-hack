@@ -11,20 +11,27 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
+import os
 from google.adk.agents import Agent, SequentialAgent, ParallelAgent
 from google.adk.tools import get_user_choice
 from google.adk.tools.agent_tool import AgentTool
-from toolbox_core import ToolboxSyncClient
-import os
+from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset
+from google.adk.tools.mcp_tool.mcp_session_manager import StreamableHTTPConnectionParams
+from google.adk.tools.openapi_tool.auth.auth_helpers import token_to_scheme_credential
 
 # Import sub-agents
-from agent_era_hack.app.subagents.discovery.product_overview import product_overview_agent
-from agent_era_hack.app.subagents.discovery.discovery_infrastructure import discovery_infrastructure_agent
-from agent_era_hack.app.subagents.discovery.discovery_security import discovery_security_agent
-from agent_era_hack.app.subagents.discovery.discovery_networking import discovery_networking_agent
-from agent_era_hack.app.subagents.discovery.recritic import recritic_agent
-from agent_era_hack.app.subagents.discovery.prompts import return_instructions_discovery_orchestrator
+# from agent_era_hack.app.subagents.discovery.product_overview import product_overview_agent
+# from agent_era_hack.app.subagents.discovery.discovery_infrastructure import discovery_infrastructure_agent
+# from agent_era_hack.app.subagents.discovery.discovery_security import discovery_security_agent
+# from agent_era_hack.app.subagents.discovery.discovery_networking import discovery_networking_agent
+# from agent_era_hack.app.subagents.discovery.recritic import recritic_agent
+# from agent_era_hack.app.subagents.discovery.prompts import return_instructions_discovery_orchestrator
+from app.subagents.discovery.product_overview import product_overview_agent
+from app.subagents.discovery.discovery_infrastructure import discovery_infrastructure_agent
+from app.subagents.discovery.discovery_security import discovery_security_agent
+from app.subagents.discovery.discovery_networking import discovery_networking_agent
+from app.subagents.discovery.recritic import recritic_agent
+from app.subagents.discovery.prompts import return_instructions_discovery_orchestrator
 
 # Define the research unit
 research_and_critique_agent = SequentialAgent(
@@ -44,12 +51,17 @@ research_and_critique_agent = SequentialAgent(
     ],
 )
 
-# Initialize Toolbox client
-mcp_url = os.environ["CONFLUENCE_MCP_URL"]
-toolbox = ToolboxSyncClient(mcp_url)
+auth_scheme, auth_credential = token_to_scheme_credential(
+    "apikey", "header", "Authorization", f"Bearer {os.getenv('CONFLUENCE_PAT')}"
+)
 
-# Load all the tools from toolset
-toolbox_tools = toolbox.load_toolset("confluence_toolset")
+confluence_mcp = MCPToolset(
+    connection_params=StreamableHTTPConnectionParams(
+        url=os.getenv("CONFLUENCE_MCP_URL"),
+    ),
+    auth_scheme=auth_scheme,
+    auth_credential=auth_credential,
+)
 
 # Define the main orchestrator agent
 discovery_agent = Agent(
@@ -58,8 +70,8 @@ discovery_agent = Agent(
     instruction=return_instructions_discovery_orchestrator(),
     tools=[
         AgentTool(research_and_critique_agent),
-        toolbox_tools,
         get_user_choice,
+        confluence_mcp,
     ],
     description="Orchestrates the product discovery, human-in-the-loop feedback, and final reporting.",
 )

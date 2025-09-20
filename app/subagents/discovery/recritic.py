@@ -13,7 +13,8 @@
 # limitations under the License.
 
 from google.adk.agents import Agent
-from agent_era_hack.app.subagents.discovery.prompts import return_instructions_recritic
+#from agent_era_hack.app.subagents.discovery.prompts import return_instructions_recritic
+from app.subagents.discovery.prompts import return_instructions_recritic
 
 with open("app/subagents/discovery/docs/discovery_questionnaire_template.md", "r") as f:
     template = f.read()

@@ -13,7 +13,8 @@
 # limitations under the License.
 
 from google.adk.agents import Agent, SequentialAgent
-from agent_era_hack.app.tools.search_tools import SearchTool, ReadWebpageTool
+#from agent_era_hack.app.tools.search_tools import SearchTool, ReadWebpageTool
+from app.tools.search_tools import SearchTool, ReadWebpageTool
 import os
 import re
 import json

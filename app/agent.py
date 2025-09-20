@@ -17,10 +17,9 @@ import os
 import google.auth
 from google.adk.agents import Agent
 from google.adk.tools import ToolContext
-from agent_era_hack.app.subagents.discovery.agent import discovery_agent
-from agent_era_hack.app.subagents.security.agent import security_agent
-from agent_era_hack.app.subagents.infra.agent import infra_agent
-from agent_era_hack.app.prompts import return_instructions_root
+from app.subagents.discovery.agent import discovery_agent
+from app.subagents.security.agent import security_agent
+from app.prompts import return_instructions_root
 
 _, project_id = google.auth.default()
 os.environ.setdefault("GOOGLE_CLOUD_PROJECT", project_id)
@@ -39,5 +38,5 @@ root_agent = Agent(
     model="gemini-2.5-pro",
     instruction=return_instructions_root(),
     tools=[save_product_name],
-    sub_agents=[discovery_agent, security_agent, infra_agent],
+    sub_agents=[discovery_agent, security_agent],
 )

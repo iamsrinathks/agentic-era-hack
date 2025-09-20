@@ -5,7 +5,7 @@ project_name = "csp-product-curation-agent"
 prod_project_id = "qwiklabs-gcp-00-2c0e214cd9e4"
 
 # Your Staging / Test Google Cloud project id
-staging_project_id = "qwiklabs-gcp-02-5a2c63d77393"
+staging_project_id = "sap-genai-playground-dev-mg"
 
 # Your Google Cloud project ID that will be used to host the Cloud Build pipelines.
 cicd_runner_project_id = "qwiklabs-gcp-00-2c0e214cd9e4"
