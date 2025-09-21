@@ -24,7 +24,18 @@ def _text_content_block(obj):
 
 
 class SearchTool(BaseTool):
-    """Reusable tool to perform a Google Custom Search query."""
+    """Reusable tool to perform a Google Custom Search query.
+
+    Expected input (args schema):
+        {"query": str, "num": int}
+
+    Returns (successful):
+        {"content": [{"type": "text", "text": <json-encoded list-of-results>}]}
+        where each result is: {"title": str, "link": str, "snippet": str}
+
+    Error shape:
+        {"content": [{"type": "text", "text": "<error message>"}], "isError": True}
+    """
     name = "search"
     description = "Perform a web search query."
 
@@ -52,7 +63,12 @@ class SearchTool(BaseTool):
         if not query:
             return {"content": [{"type": "text", "text": "Invalid query"}], "isError": True}
         try:
+            import time
+            start = time.time()
+            print(f"[tool] search START query={query}")
             results = await self._call_google_search(query, num)
+            duration = time.time() - start
+            print(f"[tool] search END elapsed={duration:.3f}s")
             return {"content": [_text_content_block(results)]}
         except Exception as e:
             return {"content": [{"type": "text", "text": f"Search API error: {e}"}], "isError": True}
@@ -77,7 +93,18 @@ class SearchTool(BaseTool):
                 for it in data.get("items", [])
             ]
 class ReadWebpageTool(BaseTool):
-    """Reusable tool to fetch and extract text content from a webpage."""
+    """Reusable tool to fetch and extract text content from a webpage.
+
+    Expected input (args schema):
+        {"url": str}
+
+    Returns (successful):
+        {"content": [{"type": "text", "text": <json-encoded object>}]}
+        where the object is {"title": str, "text": str, "url": str}
+
+    Error shape:
+        {"content": [{"type": "text", "text": "<error message>"}], "isError": True}
+    """
     name = "read_webpage"
     description = "Fetch and extract text content from a webpage."
 
@@ -104,10 +131,15 @@ class ReadWebpageTool(BaseTool):
         if not url:
             return {"content": [{"type": "text", "text": "Invalid URL"}], "isError": True}
         try:
+            import time
+            start = time.time()
+            print(f"[tool] read_webpage START url={url}")
             async with httpx.AsyncClient(timeout=30.0) as client:
                 resp = await client.get(url)
                 resp.raise_for_status()
                 html = resp.text
+            duration = time.time() - start
+            print(f"[tool] read_webpage END elapsed={duration:.3f}s url={url}")
         except Exception as e:
             return {"content": [{"type": "text", "text": f"Webpage fetch error: {e}"}], "isError": True}
 

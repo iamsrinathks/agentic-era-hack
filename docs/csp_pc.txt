@@ -1,0 +1,48 @@
+CSP - PC:
+
+Overview of the Multi-Agent System Workflow
+
+The system is designed to facilitate a structured product discovery process. It involves multiple specialized agents, each responsible for assessing specific aspects of a product. These agents work in parallel, and their findings are synthesized into a comprehensive report. The workflow is orchestrated by a central agent, ensuring a systematic and iterative process.
+
+Key Components and Their Roles
+
+Product Overview Agent
+	Function: return_instructions_product_overview
+	Role: Assesses product features, limitations, pricing, and identifies gaps or limitations in Preview and GA (General Availability) features.
+
+Infrastructure Agent
+
+	Function: return_instructions_discovery_infrastructure
+	Role: Evaluates the product's infrastructure capabilities, including Terraform support, REST API features, gcloud functionalities, and regional/multi-regional support.
+
+Security Agent
+
+	Function: return_instructions_discovery_security
+	Role: Focuses on security features such as encryption (at rest and in transit), TLS, CMEK, IAM, data residency, VPC-SC, and custom security policies.
+
+Networking Agent
+
+	Function: return_instructions_discovery_networking
+	Role: Analyzes networking features like Private Service Connect, Private Google Access, firewalls, and interconnects, identifying any gaps or limitations.
+Critic Agent
+
+	Function: return_instructions_recritic
+	Role: Reviews and critiques the findings of the other agents. It ensures the accuracy and completeness of the information, identifies hallucinations, and synthesizes the findings into a structured product assessment template. The output includes:
+	- Suitability assessment areas with ratings and observations.
+	- Areas requiring further discovery.
+	- Markdown-based structured output with links and recommendations.
+
+Discovery Orchestrator
+
+	Function: return_instructions_discovery_orchestrator
+	Role: Acts as the central orchestrator for the discovery process. It follows a strict workflow:
+		- Calls the ResearchAndCritiqueAgent tool for initial research.
+		- Presents the draft report to the user.
+		- Seeks user approval or feedback.
+		- Publishes the approved report to Confluence or incorporates feedback and restarts the process.
+
+Workflow Highlights
+	- Parallel Execution: The system leverages multiple agents working in parallel to cover different aspects of product discovery.
+	- Iterative Feedback Loop: The orchestrator ensures that user feedback is incorporated iteratively, refining the report until approval.
+	- Structured Output: The critic agent synthesizes findings into a structured format, ensuring clarity and comprehensiveness.
+	- Automation and Human Oversight: While the process is largely automated, it includes checkpoints for human review and approval.

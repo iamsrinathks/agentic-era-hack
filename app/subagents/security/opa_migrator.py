@@ -14,17 +14,24 @@
 
 from google.adk.agents import Agent
 
-opa_migrator_agent = Agent(
-    name="OpaMigratorAgent",
-    model="gemini-2.5-flash",
-    instruction="""You are a policy migration specialist. Your job is to migrate OPA Rego policies to Google Cloud custom Organization Policies for the product: {user:product_name}.
+def get_opa_migrator_agent():
+    opa_migrator_agent = Agent(
+        name="OpaMigratorAgent",
+        model="gemini-2.5-flash",
+        instruction="""You are a policy migration specialist. Your job is to migrate OPA Rego policies to Google Cloud custom Organization Policies for the product: {user:product_name}.
 
-You MUST follow this workflow:
-1.  Use the `get_contents` tool to find and read the Rego policies in the repository.
-2.  Translate the Rego policy to a custom Organization Policy.
-3.  Use the `push_multiple_files` tool to commit the new Organization Policy to the repository.
-"""
-)
+    You MUST follow this workflow:
+    1.  Use the `get_contents` tool to find and read the Rego policies in the repository.
+        - Expected `get_contents` return shape (MCP): {"content": "base64-encoded-file"} or {"files": [{"path": str, "content": str}]}
+    2.  Translate the Rego policy to a custom Organization Policy.
+    3.  Use the `push_multiple_files` tool to commit the new Organization Policy to the repository.
+        - Expected `push_multiple_files` payload (MCP): {"branch": str, "files": [{"path": str, "content": str}], "message": str}
+        - Expected return: {"status": "success" | "error", "details": ...}
+    """
+    )
+    return opa_migrator_agent
+
+opa_migrator_agent = get_opa_migrator_agent()
 
 
 

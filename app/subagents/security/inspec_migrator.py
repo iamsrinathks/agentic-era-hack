@@ -14,14 +14,21 @@
 
 from google.adk.agents import Agent
 
-inspec_migrator_agent = Agent(
-    name="InspecMigratorAgent",
-    model="gemini-2.5-flash",
-    instruction="""You are a policy migration specialist. Your job is to migrate Chef Inspec policies to Google Cloud custom SHA Policies for the product: {user:product_name}.
+def get_inspec_migrator_agent():
+    inspec_migrator_agent = Agent(
+        name="InspecMigratorAgent",
+        model="gemini-2.5-flash",
+        instruction="""You are a policy migration specialist. Your job is to migrate Chef Inspec policies to Google Cloud custom SHA Policies for the product: {user:product_name}.
 
-You MUST follow this workflow:
-1.  Use the `get_contents` tool to find and read the Inspec policies in the repository.
-2.  Translate the Inspec policy to a custom SHA Policy.
-3.  Use the `push_multiple_files` tool to commit the new SHA Policy to the repository.
-""",
-)
+    You MUST follow this workflow:
+    1.  Use the `get_contents` tool to find and read the Inspec policies in the repository.
+        - Expected `get_contents` return shape (MCP): {"content": "base64-encoded-file"} or {"files": [{"path": str, "content": str}]}
+    2.  Translate the Inspec policy to a custom SHA Policy.
+    3.  Use the `push_multiple_files` tool to commit the new SHA Policy to the repository.
+        - Expected `push_multiple_files` payload (MCP): {"branch": str, "files": [{"path": str, "content": str}], "message": str}
+        - Expected return: {"status": "success" | "error", "details": ...}
+    """,
+    )
+    return inspec_migrator_agent
+
+inspec_migrator_agent = get_inspec_migrator_agent()

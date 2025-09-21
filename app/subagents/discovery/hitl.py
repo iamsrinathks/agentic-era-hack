@@ -16,10 +16,29 @@ from google.adk.agents import Agent
 from google.adk.tools import get_user_choice, ToolContext
 
 def create_confluence_page(report: str, tool_context: ToolContext) -> dict:
-    """Creates a Confluence page with the given report."""
+    """Creates a Confluence page with the given report.
+
+    Expected payload:
+        report: str -- markdown or HTML report to publish
+
+    Returns:
+        dict: {
+            "status": "success" | "error",
+            "message": str,
+            "page_id": Optional[str]
+        }
+
+    Note: This is a placeholder implementation for local testing. Replace or
+    wire this function to the MCP Confluence toolset when running in production.
+    """
     # This is a placeholder for the actual MCP tool to create a Confluence page.
     # You will need to replace this with your actual implementation.
+    import time
+    start = time.time()
+    print("[tool] create_confluence_page START")
     print(f"Creating Confluence page with the following report:\n{report}")
+    duration = time.time() - start
+    print(f"[tool] create_confluence_page END elapsed={duration:.3f}s")
     return {"status": "success", "message": "Confluence page created successfully."}
 
 
