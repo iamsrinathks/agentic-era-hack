@@ -1,0 +1,9 @@
+module "org_policy_customDetailedAuditLoggingMode" {
+  source      = "terraform-google-modules/org-policy/google"
+  constraint  = "customConstraints/customDetailedAuditLoggingMode"
+  title       = "Custom Detailed Audit Logging Mode Policy"
+  description = "This custom policy aims to mirror the functionality of the predefined 'Detailed audit logging mode' constraint. When you apply the detailedAuditLoggingMode constraint, Cloud Audit Logs logs associated with Cloud Storage operations contain detailed request and response information. This constraint is recommended to be used in conjunction with Bucket Lock and Object Retention Lock when seeking various compliances such as SEC Rule 17a-4(f), CFTC Rule 1.31(c)-(d), and FINRA Rule 4511(c). Logged information includes query parameters, path parameters, and request body parameters. Logs exclude certain parts of requests and responses that are associated with sensitive information. For example, logs exclude: Credentials, such as Authorization , X-Goog-Signature , or upload-id . Encryption key information, such as x-goog-encryption-key . Raw object data. When using this constraint, note the following: Detailed request and response information is not guaranteed; in rare cases, empty logs might be returned. Enabling detailedAuditLoggingMode increases the amount of data stored in audit logs, which could affect your Cloud Logging charges for Data Access logs. Logged requests and responses are recorded in a generic format that matches the field names of the JSON API."
+  expression  = <<CEL
+resource.name.startsWith("projects/YOUR_PROJECT_ID")
+CEL
+}

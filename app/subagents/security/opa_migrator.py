@@ -14,6 +14,8 @@
 
 from google.adk.agents import Agent
 from google.adk.tools import ToolContext
+from app.subagents.security.prompts import return_instructions_opa_migrator
+
 
 def migrate_rego_to_org_policy(rego_policy_path: str, tool_context: ToolContext) -> dict:
     """Migrates an OPA Rego policy to a custom Organization Policy."""
@@ -26,7 +28,7 @@ def migrate_rego_to_org_policy(rego_policy_path: str, tool_context: ToolContext)
 opa_migrator_agent = Agent(
     name="OpaMigratorAgent",
     model="gemini-2.5-flash",
-    instruction="You are a policy migration specialist. Your job is to migrate OPA Rego policies to Google Cloud custom Organization Policies for the product: {user:product_name}.",
+    instruction=return_instructions_opa_migrator(),
     tools=[migrate_rego_to_org_policy],
 )
 
