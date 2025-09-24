@@ -14,8 +14,6 @@
 
 from google.adk.agents import Agent
 from google.adk.tools import ToolContext
-from app.subagents.security.prompts import return_instructions_inspec_migrator
- 
 
 def migrate_inspec_to_sha(inspec_policy_path: str, tool_context: ToolContext) -> dict:
     """Migrates a Chef Inspec policy to a custom SHA policy."""
@@ -28,6 +26,6 @@ def migrate_inspec_to_sha(inspec_policy_path: str, tool_context: ToolContext) ->
 inspec_migrator_agent = Agent(
     name="InspecMigratorAgent",
     model="gemini-2.5-flash",
-    instruction=return_instructions_inspec_migrator(),
+    instruction="You are a policy migration specialist. Your job is to migrate Chef Inspec policies to Google Cloud custom SHA Policies for the product: {user:product_name}.",
     tools=[migrate_inspec_to_sha],
 )

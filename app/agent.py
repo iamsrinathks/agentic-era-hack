@@ -22,17 +22,8 @@ from app.subagents.security.agent import security_agent
 from app.subagents.infra.agent import infra_agent
 from app.prompts import return_instructions_root
 
-
 _, project_id = google.auth.default()
-if not project_id:
-    project_id = os.environ.get("GCLOUD_PROJECT")
-if not project_id:
-    raise ValueError(
-        "Could not determine Google Cloud project. "
-        "Set the GCLOUD_PROJECT environment variable or run "
-        "'gcloud auth application-default login'."
-    )
-os.environ["GOOGLE_CLOUD_PROJECT"] = project_id
+os.environ.setdefault("GOOGLE_CLOUD_PROJECT", project_id)
 os.environ.setdefault("GOOGLE_CLOUD_LOCATION", "global")
 os.environ.setdefault("GOOGLE_GENAI_USE_VERTEXAI", "True")
 

@@ -18,12 +18,38 @@ import os
 import re
 import json
 from google.adk.tools import ToolContext
-from app.subagents.security.prompts import return_instructions_sha_researcher, return_instructions_sha_writer
+
 # Researcher Agent
 sha_researcher_agent = Agent(
     name="ShaResearcherAgent",
     model="gemini-2.5-flash",
-    instruction=return_instructions_sha_researcher(),
+    instruction="""You are an autonomous research and coding agent. Your sole purpose is to generate JSON configurations for all possible Security Health Analytics custom modules for the product: {user:product_name}.
+
+You MUST follow this workflow precisely. Do not deviate.
+1.  Your first action is to use the `search` tool to find the official Google Cloud documentation that lists all available detectors for Security Health Analytics custom modules related to the product '{user:product_name}'.
+2.  From the search results, use the `read_webpage` tool to read the content of the most relevant documentation page.
+3.  From the webpage content, you MUST identify every single available detector.
+4.  For each and every detector you find, you MUST generate a complete, valid JSON file. You MUST NOT generate YAML or HCL.
+5.  The JSON format MUST be exactly as follows, with correct JSON syntax:
+    ```json
+    {{
+      "display_name": "A display name for the custom module",
+      "description": "A description of the custom module.",
+      "custom_config": {{
+        "predicate": {{
+          "expression": "resource.service_account.email == \"your-service-account@your-project.iam.gserviceaccount.com\""
+        }},
+        "resource_selector": {{
+          "resource_types": ["iam.googleapis.com/ServiceAccount"]
+        }},
+        "severity": "HIGH",
+        "recommendation": "A recommendation for the user."
+      }}
+    }}
+    ```
+6.  You MUST then combine all of the generated JSON files into a single string. Each JSON block MUST be separated by a file delimiter line, like this: `=== detector_name.json ===`
+7.  Your final output MUST be only this multi-file string. Do not add any conversational text or explanations.
+""",
     tools=[SearchTool(), ReadWebpageTool()],
 )
 
@@ -80,7 +106,7 @@ def write_sha_policy_json(multi_file_json_string: str, tool_context: ToolContext
 sha_writer_agent = Agent(
     name="ShaWriterAgent",
     model="gemini-2.5-flash",
-    instruction=return_instructions_sha_writer(),
+    instruction="You are a policy writer. Your job is to take the provided multi-file JSON string and use the `write_sha_policy_json` tool to save each policy to its own .json file.",
     tools=[write_sha_policy_json],
 )
 

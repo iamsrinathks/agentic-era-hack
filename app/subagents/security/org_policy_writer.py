@@ -17,14 +17,33 @@ from app.tools.search_tools import SearchTool, ReadWebpageTool
 import os
 import re
 from google.adk.tools import ToolContext
-from app.subagents.security.prompts import return_instructions_org_policy_writer, return_instructions_terraform_module_generator
-
 
 # Researcher Agent
 org_policy_researcher_agent = Agent(
     name="OrgPolicyResearcherAgent",
     model="gemini-2.5-flash",
-    instruction=return_instructions_terraform_module_generator(),
+    instruction="""You are an autonomous research and coding agent. Your sole purpose is to generate Terraform module blocks for all possible custom Organization Policies for the product: {user:product_name}.
+
+You MUST follow this workflow precisely. Do not deviate.
+1.  Your first action is to use the `search` tool to find the official Google Cloud documentation page that lists all available custom Organization Policy constraints for the product '{user:product_name}'.
+2.  From the search results, use the `read_webpage` tool to read the content of the most relevant documentation page.
+3.  From the webpage content, you MUST identify every single available constraint.
+4.  For each and every constraint you find, you MUST generate a complete, valid Terraform module block. You MUST NOT generate YAML.
+5.  The Terraform format MUST be exactly as follows, with correct HCL syntax and indentation:
+    ```terraform
+    module "org_policy_the_policy_name" {{
+      source      = "terraform-google-modules/org-policy/google"
+      constraint  = "customConstraints/custom.ConstraintName"
+      title       = "A display name for the constraint"
+      description = "A description of the constraint."
+      expression  = <<CEL
+    resource.cel_expression_goes_here == true
+    CEL
+    }}
+    ```
+6.  You MUST then combine all of the generated module blocks into a single string. Each block MUST be separated by a file delimiter line, like this: `=== org_policy_the_policy_name.tf ===`
+7.  Your final output MUST be only this multi-file string. Do not add any conversational text or explanations.
+""",
     tools=[SearchTool(), ReadWebpageTool()],
 )
 
@@ -77,7 +96,7 @@ def write_org_policy_tf(multi_file_tf_string: str, tool_context: ToolContext) ->
 org_policy_writer_agent = Agent(
     name="OrgPolicyWriterAgent",
     model="gemini-2.5-flash",
-    instruction=return_instructions_org_policy_writer(),
+    instruction="You are a policy writer. Your job is to take the provided multi-file Terraform string and use the `write_org_policy_tf` tool to save each policy to its own .tf file.",
     tools=[write_org_policy_tf],
 )
 
