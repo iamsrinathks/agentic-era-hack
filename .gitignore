@@ -196,3 +196,7 @@ my_env.tfvars
 .saved_chats
 .env
 .requirements.txt
+
+# Local Files for testing to ignore
+run_agent.py
+logs/

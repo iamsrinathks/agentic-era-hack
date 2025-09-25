@@ -15,7 +15,7 @@ import os
 from google.adk.agents import Agent, SequentialAgent, ParallelAgent
 from google.adk.tools import get_user_choice
 from google.adk.tools.agent_tool import AgentTool
-from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, StreamableHTTPConnectionParams
+from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
 from google.adk.tools.openapi_tool.auth.auth_helpers import token_to_scheme_credential
 
 # Import sub-agents
@@ -80,6 +80,7 @@ def get_discovery_agent():
             ),
             auth_scheme=auth_scheme,
             auth_credential=auth_credential,
+            errlog=None,
         )
     else:
         print("Warning: CONFLUENCE_MCP_URL or CONFLUENCE_PAT not set; Confluence MCP tool will not be available.")

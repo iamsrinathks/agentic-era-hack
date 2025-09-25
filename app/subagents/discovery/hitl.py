@@ -14,6 +14,8 @@
 
 from google.adk.agents import Agent
 from google.adk.tools import get_user_choice, ToolContext
+from md2cf.confluence_renderer import ConfluenceRenderer
+import mistune
 
 def create_confluence_page(report: str, tool_context: ToolContext) -> dict:
     """Creates a Confluence page with the given report.
@@ -36,7 +38,9 @@ def create_confluence_page(report: str, tool_context: ToolContext) -> dict:
     import time
     start = time.time()
     print("[tool] create_confluence_page START")
-    print(f"Creating Confluence page with the following report:\n{report}")
+    renderer = ConfluenceRenderer(use_xhtml=True)
+    confluence_body = mistune.markdown(report, renderer=renderer)
+    print(f"Creating Confluence page with the following report:\n{confluence_body}")
     duration = time.time() - start
     print(f"[tool] create_confluence_page END elapsed={duration:.3f}s")
     return {"status": "success", "message": "Confluence page created successfully."}

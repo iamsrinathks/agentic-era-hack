@@ -13,7 +13,7 @@
 # limitations under the License.
 import os
 from google.adk.agents import Agent
-from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, StreamableHTTPConnectionParams
+from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
 from google.adk.tools.openapi_tool.auth.auth_helpers import token_to_scheme_credential
 from app.subagents.security.prompts import return_instructions_main_security
 from app.subagents.security.org_policy_writer import get_org_policy_workflow_agent
@@ -51,6 +51,7 @@ def get_security_agent():
             ),
             auth_scheme=auth_scheme,
             auth_credential=auth_credential,
+            errlog=None,
         )
         agent_tools.append(gitlab_mcp)
     else:

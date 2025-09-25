@@ -20,7 +20,7 @@ from google.adk.tools import ToolContext
 from app.subagents.discovery.agent import get_discovery_agent
 from app.subagents.security.agent import get_security_agent
 from app.prompts import return_instructions_root
-from google.adk.tools.mcp_tool.mcp_toolset import McpToolset, StreamableHTTPConnectionParams
+from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
 
 # Instead of monkeypatching internals, add a logging Filter to suppress
 # the noisy OpenTelemetry "Failed to detach context" ValueError logs that
@@ -113,6 +113,7 @@ confluence_toolset = McpToolset(
         url=confluence_mcp_url,
         headers_to_pass={"Authorization": f"Bearer {os.getenv('CONFLUENCE_PAT', '')}"},
     ),
+    errlog=None,
 )
 
 root_agent = Agent(
@@ -121,4 +122,5 @@ root_agent = Agent(
     instruction=return_instructions_root(),
     tools=[save_product_name, confluence_toolset],
     sub_agents=[discovery_agent, security_agent],
+    description="Orchestrates the product discovery, human-in-the-loop feedback, and final reporting.",
 )
