@@ -1,0 +1,19 @@
+# Example environment variables for the application
+# Rename this file to .env and fill in the values before running the application
+CUSTOM_SEARCH_API_KEY = ""
+GOOGLE_SEARCH_ENGINE_ID = ""
+GOOGLE_CLOUD_PROJECT="sap-genai-playground-dev-mg"
+GOOGLE_CLOUD_LOCATION="us-central1"
+# Vertex AI Search data store ID in the format:
+# projects/{project_number}/locations/global/collections/default_collection/dataStores/{data_store_id}
+VERTEX_AI_SEARCH_DATA_STORE_ID = "projects/339258993962/locations/global/collections/default_collection/dataStores/dds-discovery-agent-vai-ds"
+CONFLUENCE_MCP_URL="http://localhost:8585/mcp"
+GITHUB_MCP_URL="http://0.0.0.0:8585/mcp"
+GITHUB_TOKEN=""
+CONFLUENCE_PAT=""
+GITLAB_BASE_URL="http://localhost:9080/mcp"
+GITLAB_TOKEN=""
+GOOGLE_GENAI_USE_VERTEXAI=TRUE
+GOOGLE_CLOUD_STORAGE_BUCKET="product_discovery_bucket"
+# Set to TRUE to serve the web interface from the agent when deployed on Cloud Run
+SERVE_WEB_INTERFACE=TRUE
