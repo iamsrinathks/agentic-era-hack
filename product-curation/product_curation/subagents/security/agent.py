@@ -3,12 +3,14 @@ from google.adk.agents import Agent, SequentialAgent
 from google.adk.tools import get_user_choice
 from google.adk.tools.agent_tool import AgentTool
 from google.adk.tools.mcp_tool import McpToolset, StreamableHTTPConnectionParams
+# from google.adk.tools.mcp_tool.mcp_toolset import MCPToolset, StreamableHTTPConnectionParams
 from google.adk.tools.openapi_tool.auth.auth_helpers import token_to_scheme_credential
 from .org_policy_writer import get_org_policy_workflow_agent
 from .sha_writer import get_sha_workflow_agent
 from .opa_migrator import get_opa_migrator_agent
 from .inspec_migrator import get_inspec_migrator_agent
 from .prompts import return_instructions_main_security
+from .csv_handler import get_csv_handler_agent
  
 def get_security_agent():
     gitlab_base = os.getenv("GITLAB_BASE_URL") or os.getenv("GITLAB_MCP_URL")
@@ -43,6 +45,7 @@ def get_security_agent():
             get_sha_workflow_agent(),
             get_opa_migrator_agent(),
             get_inspec_migrator_agent(),
+            get_csv_handler_agent(),
         ],
     )
     return security_agent

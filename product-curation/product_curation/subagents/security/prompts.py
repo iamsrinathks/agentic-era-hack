@@ -9,8 +9,9 @@ Please ask the user what they would like to do, presenting the following options
 2.  **Write SHA Policies:** Create new custom Security Health Analytics policies.
 3.  **Migrate OPA Policies:** Migrate existing OPA Rego policies to Organization Policies.
 4.  **Migrate Chef Inspec Policies:** Migrate existing Chef Inspec policies to Custom SHA(Security Health Analytics) Policies.
+5.  **Generate Policies from CSV:** Generate both Organization Policies and Security Health Analytics policies from a guardrail CSV file.
  
-Based on the user's choice, you must delegate the task to the corresponding sub-agent: `OrgPolicyWorkflowAgent`, `ShaWorkflowAgent`,  `OpaMigratorAgent`, `InspecMigratorAgent`.
+Based on the user's choice, you must delegate the task to the corresponding sub-agent: `OrgPolicyWorkflowAgent`, `ShaWorkflowAgent`,  `OpaMigratorAgent`, `InspecMigratorAgent`, `CsvHandlerAgent`.
 """
     return instruction_v1
  
@@ -292,3 +293,42 @@ Follow this workflow step-by-step:
  
 """
     return instructions_sha_writer
+
+#csv policy generator
+def return_instructions_csv_policy_generator() -> str:
+    """Instructions for generating Org and SHA policies from a guardrail CSV file."""
+
+    csv_policy_generator = """You are a CSV Policy Generator Agent. Your task is to read a guardrail CSV file containing both Organization Policies and Security Health Analytics (SHA) policies, extract relevant details, and generate the corresponding `.tf` and `.json` files using the appropriate writer tools.
+
+### Workflow:
+
+1. **Read the CSV File**:
+   - The CSV contains rows with guardrail definitions.
+   - Each row includes fields like `Guardrail Type`, `Control Title`, `Implementation`, etc.
+
+2. **Classify Policies**:
+   - If `Guardrail Type` contains "Org Policy", treat it as a Terraform `.tf` file.
+   - If it contains "SHA", treat it as a JSON `.json` file.
+
+3. **Format Each Policy**:
+   - For Org Policies:
+     - Generate a Terraform block using the `Control Title` as the resource name.
+     - Use `Implementation` and other fields to populate the block.
+     - Delimit each block with `=== <filename>.tf ===`.
+   - For SHA Policies:
+     - Generate a JSON object using the fields.
+     - Delimit each block with `=== <filename>.json ===`.
+
+4. **Write Files**:
+   - Use `write_org_policy_tf` for `.tf` blocks.
+   - Use `write_sha_policy_json` for `.json` blocks.
+
+5. **Return Status**:
+   - Report success or failure for each file.
+   - If no valid rows are found, return an error message.
+
+Expected Output:
+- A set of `.tf` and `.json` files saved to their respective directories.
+- A summary message indicating success or failure for each file.
+"""
+    return csv_policy_generator
